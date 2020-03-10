@@ -1,0 +1,582 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>How to Git Good</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	opacity: 0.5;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif; }
+.mono { font-family: Nitti, 'Microsoft YaHei', '微软雅黑', monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, Nitti, 'Microsoft YaHei', '微软雅黑', monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bb2d8b3f-2fff-4ed4-bd0b-5c597f081112" class="page sans"><header><h1 class="page-title">How to Git Good</h1><table class="properties"><tbody></tbody></table></header><div class="page-body"><h1 id="3a10437d-f7ac-40c9-956d-98f188e9ce9b" class="">A guide on how to get started with git and version control</h1><h3 id="25d5de73-28c9-4d8c-a463-d64caa430dcc" class="">By Joe Guidoboni</h3><p id="115f11bc-b4d9-4882-a07c-7dfa360b7d85" class="">This guide is intended to be the guide for git that I wish I had when I started as a CS student. I&#x27;m going to cover what git is and how to get started. It assumes that you already have git installed.</p><p id="5ff95888-bc37-4b3d-8c57-867082c1338b" class="">Git is a <strong>Version Control System</strong>, or <strong>VCS</strong>. The best way to describe what git is is to show some of the benefits of it. VCS&#x27;s give you a way to work on code in a safer way so that if something goes horribly wrong, you can go back to it. They also allow you to implement different features of code without having to worry about breaking the parts that work. This also allows other people to work on your code without you having to worry about them breaking it.</p><h2 id="62619be2-ebae-4e2e-b034-b92a8e943eb0" class="">1. Creating a repository</h2><p id="4b3fd3cb-fe55-4510-84df-4886299604ed" class="">A <em>repository </em>in git, more widely known as a <em>repo,</em> is a folder containing all of the files that you want to work on and keep track of. The way you create a repo is super simple. Just go to the empty folder that you want to make into a repo and type this into the Terminal:</p><pre id="f6b83109-8fff-467e-8df7-f37eb4a8dee2" class="code"><code>git init</code></pre><p id="d0ae21a4-4422-4689-b4d4-4dd9c778fe7b" class="">This initializes a repository, so now files that you put in this folder and <em>add </em>to git will be tracked by git. Think of your repository as home. This is where the files that you are working on are located. We can go off and edit, even add or delete files of in the repository, but will always be able to get back to them if we screw something up.</p><h2 id="e4a41faf-0eb4-46d6-a89c-8ee0d4d5ff72" class="">2. Adding files to a repository</h2><p id="cc13570f-508f-4e5b-88ae-facab41ae10b" class="">Now that we&#x27;ve created a repository, we want to add files that can be tracked by git. To do this, we place the files that we want to keep track of into the folder that the repository is located in, and then type into the Terminal:</p><pre id="f0dd5913-2ac6-4042-ac96-0d7c5a6630e1" class="code"><code>git add &#x27;file&#x27;</code></pre><p id="c7114723-ad4b-41bb-b66b-f71f05fe515f" class="">Where &#x27;file&#x27; is the name of the file that we just put into the our folder. Git will now keep track of that file for us and we can edit it in any way we want. You may now be thinking &quot;If git prevents me from screwing up code that I want to keep, how do I save the code that I <em>do </em>want to keep?&quot;, which is a very good question. This brings us to <em>commits</em>, which is how git keeps track of your code.</p><h2 id="e14dadcf-e6d1-4bf0-803b-b5e70b56b3f9" class="">3. Commits</h2><p id="e2fd4ca4-7391-4089-b0c8-4669bf7f4593" class="">For commits, its very important to understand how git keeps track of your code. When you save a file, git doesn&#x27;t keep a copy of it, as this could result in thousands of copies of the same file, which is horribly inefficient. Instead, git keeps track of the changes that you make between versions of a file, and the way it does this is through <em>commits</em>.</p><p id="59cf8e69-00c3-4467-8ec3-c6d2de8a170f" class="">So far you&#x27;ve created a repo, added a file to it, and modified it. Now you want to save the changes that you&#x27;ve made to the file using a commit. To do this, type the following line into the command line:</p><pre id="d8ed31de-7e5c-4435-ae44-bebbca680f31" class="code"><code>git commit -m &quot;This is a message&quot;</code></pre><p id="356e1106-2c74-49e5-bc58-9fd57b87b10b" class="">Having a message that goes along with the commit is incredibly useful for keeping track of what you&#x27;ve since changed about the file. The &#x27;-m&#x27; modifier says that you want to add a message to the commit, and the message you would write would follow in double quotes, like the above example. If we&#x27;ve made a horrible mistake and we want to go back to any of our previous commits, we have to <em>revert </em>back to them using their respective <em>hashes. </em>To get the hashes of our previous commits, simply type:</p><pre id="0e027745-800c-4b3c-b493-8b293adcbbf1" class="code"><code>git log</code></pre><p id="4464ae7e-82c0-46f7-8782-b4a295843687" class="">Which displays all the information about all of your previous commits like this:</p><pre id="69a8cd99-a28f-4d67-a786-e30c0f75ffa4" class="code"><code>commit 18a8a14f462bb980e4dc849d1fa27c5d65d14ea7 (HEAD -&gt; master, origin/master, origin/HEAD)
+Author: Joe Guidoboni &lt;jrg1057@wildcats.unh.edu&gt;
+Date:   Sun Nov 24 16:25:47 2019 -0500
+
+    Added initialixation code
+
+commit 9d2af783fb8212b74434193c5ccb0ae6c0328380
+Author: Joe Guidoboni &lt;jrg1057@wildcats.unh.edu&gt;
+Date:   Sat Nov 16 18:21:28 2019 -0500
+
+    Finished implementing definitions.h
+
+commit 9952db77a03b4a738bdf244d0bd67a9d2a686eb6
+Author: Joe Guidoboni &lt;jrg1057@wildcats.unh.edu&gt;
+Date:   Sat Nov 16 18:13:01 2019 -0500
+
+    Updated README, began implementing definitions</code></pre><p id="44afa406-ce74-40bd-a3f7-43f901e1e5e5" class="">Those big long strings of numbers and letters are called <em>hashes</em>. The hash value of my last commit for this is</p><pre id="ca35ba2e-7da7-41f2-bf28-5a0e2eb648bf" class="code"><code>18a8a14f462bb980e4dc849d1fa27c5d65d14ea7</code></pre><p id="957ab408-8e45-4a1d-855b-813581682f4b" class="">which is the hash up at the top. If I wanted to go to the commit before the most recent one -the one with message &quot;Finished implementing definitions.h&quot;- I would use the following command in the Terminal:</p><pre id="20177a31-abee-4d79-9a21-e0646a26ba4a" class="code"><code>git reset --soft 18a8a14f462bb980e4dc849d1fa27c5d65d14ea7</code></pre><p id="59cfa9d1-4377-41f6-810f-a7e0fdf0a02b" class="">where the &#x27;—soft&#x27; modifier means that I still have things that I&#x27;m working on that I don&#x27;t want to overwrite when I go back to the previous commit.</p><h2 id="f5cc2f42-7501-45d8-a500-5bc6ae32ff52" class="">Wrapping up</h2><p id="ed0eb824-2509-48c2-af47-73f6eec95347" class="">That&#x27;s about all there is to doing basic operations with git. Working with others, or working on code that&#x27;s started on another computer can also be done through git, and follow the same process, but require a bit more setup. But if you just want to use git for a personal project, this is all you need.</p><p id="01da9c47-65f1-492d-9f1c-316e39448479" class="">
+</p></div></article></body></html>
