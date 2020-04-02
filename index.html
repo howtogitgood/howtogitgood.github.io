@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>How to Git Good</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>How to Get Good with Git</title><style>
 /* webkit printing magic: print all background colors */
 html {
 	-webkit-print-color-adjust: exact;
@@ -403,22 +403,69 @@ blockquote {
 	border-left: 3px solid rgb(55, 53, 47);
 }
 
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
 .bookmark-href {
 	font-size: 0.75em;
-	opacity: 0.5;
+	margin-top: 0.25em;
 }
 
 .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif; }
-.mono { font-family: Nitti, 'Microsoft YaHei', '微软雅黑', monospace; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
 .pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
 
-.pdf .code { font-family: Source Code Pro, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
 
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
 
-.pdf .mono { font-family: PT Mono, Nitti, 'Microsoft YaHei', '微软雅黑', monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
 
 .highlight-default {
 }
@@ -543,6 +590,16 @@ blockquote {
 .block-color-red_background {
 	background: rgb(251,228,228);
 }
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
 
 .checkbox {
 	display: inline-flex;
@@ -589,10 +646,9 @@ commit 65c166fa56062285cb6f36f6037fa72b83a1f704
 Author: Joe Guidoboni &lt;jrg1057@wildcats.unh.edu&gt;
 Date:   Tue Mar 24 09:55:14 2020 -0400
 
-    First commit</code></pre><p id="44afa406-ce74-40bd-a3f7-43f901e1e5e5" class="">The big long strings of numbers and letters are called <em>hashes</em>. To revert to a previous commit, find the hash of the commit that you want to go to, and type </p><pre id="20177a31-abee-4d79-9a21-e0646a26ba4a" class="code"><code>git reset --soft hash-value</code></pre><p id="59cfa9d1-4377-41f6-810f-a7e0fdf0a02b" class="">where the <em>—soft</em> flagmeans that I still have things that I&#x27;m working on that I don&#x27;t want to overwrite when I go back to the previous commit, and the <em>hash-value </em>is the hash of the commit that you want to go back to.</p><p id="637e7f51-5fa9-4fdd-9b76-9bbac625969d" class="">To check if it was done correctly, type:</p><pre id="d2ed44ad-c57a-4896-ac85-3275cec7006c" class="code"><code>git log</code></pre><p id="83890829-368f-4c97-95b6-976e7dd7bb10" class="">You should see something like the following, where the we are back at the commit that you wanted to revert to:</p><pre id="87c5a012-550a-4154-bf26-7fb8481add42" class="code"><code>commit 65c166fa56062285cb6f36f6037fa72b83a1f704 (HEAD -&gt; master)
+    First commit</code></pre><p id="44afa406-ce74-40bd-a3f7-43f901e1e5e5" class="">The big long strings of numbers and letters are called <em>hashes</em>. In this example, we&#x27;re going to go back to the commit with the message &quot;First Commit&quot;, which has the hash value:</p><pre id="fdcdb141-f43e-4720-bee3-585fc36c62e7" class="code"><code>65c166fa56062285cb6f36f6037fa72b83a1f704</code></pre><p id="9b9d4244-ff5e-482d-bfbd-74a9e4666faa" class="">To revert to a previous commit, find the hash of the commit that you want to go to, and type </p><pre id="20177a31-abee-4d79-9a21-e0646a26ba4a" class="code"><code>git reset --soft hash-value</code></pre><p id="59cfa9d1-4377-41f6-810f-a7e0fdf0a02b" class="">where the <em>—soft</em> flagmeans that I still have things that I&#x27;m working on that I don&#x27;t want to overwrite when I go back to the previous commit, and the <em>hash-value </em>is the hash of the commit that you want to go back to. Using the example hashvalue, we would type:</p><pre id="8b0e6827-1cc1-4beb-b9d6-7963cb11c524" class="code"><code>git reset --soft 65c166fa56062285cb6f36f6037fa72b83a1f704</code></pre><p id="637e7f51-5fa9-4fdd-9b76-9bbac625969d" class="">To check if it was done correctly, type:</p><pre id="d2ed44ad-c57a-4896-ac85-3275cec7006c" class="code"><code>git log</code></pre><p id="83890829-368f-4c97-95b6-976e7dd7bb10" class="">You should see something like the following, where the we are back at the commit that you wanted to revert to:</p><pre id="87c5a012-550a-4154-bf26-7fb8481add42" class="code"><code>commit 65c166fa56062285cb6f36f6037fa72b83a1f704 (HEAD -&gt; master)
 Author: Joe Guidoboni &lt;jrg1057@wildcats.unh.edu&gt;
 Date:   Tue Mar 24 09:55:14 2020 -0400
 
-    First commit
-</code></pre><h2 id="f5cc2f42-7501-45d8-a500-5bc6ae32ff52" class="">Wrapping up</h2><p id="ed0eb824-2509-48c2-af47-73f6eec95347" class="">That&#x27;s all there is to do basic operations with git. Git is a very robust system and is designed so that it is difficult to mess up the files that you are working on beyond repair.</p><p id="01da9c47-65f1-492d-9f1c-316e39448479" class="">
+    First commit</code></pre><h2 id="f5cc2f42-7501-45d8-a500-5bc6ae32ff52" class="">Wrapping up</h2><p id="ed0eb824-2509-48c2-af47-73f6eec95347" class="">That&#x27;s all there is to do basic operations with git. Git is a very robust system and is designed so that it is difficult to mess up the files that you are working on beyond repair.</p><p id="01da9c47-65f1-492d-9f1c-316e39448479" class="">
 </p></div></article></body></html>
